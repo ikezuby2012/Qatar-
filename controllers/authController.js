@@ -76,6 +76,7 @@ exports.logout = catchAsync(async (req, res, next) => {
 
 exports.protect = catchAsync(async (req, res, next) => {
     //getting the token and checking if it exist
+    console.log(req.headers);
     let token;
     if (req.headers.authorization && req.headers.authorization.startsWith("bearer")) {
         token = req.headers.authorization.split(" ")[1];
@@ -89,6 +90,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     // verify token
     const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
     //check if user exist
+    console.log(decoded.id);
     const freshUser = await User.findById(decoded.id);
     if (!freshUser) {
         return next(new AppError("the user belonging to this token does not exist!", 403))

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { FaTwitter, FaWhatsapp, FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 
+import { Mail, LocationOn } from "@material-ui/icons";
 const Footer = () => {
     const year = new Date().getFullYear();
     return (
@@ -58,18 +59,18 @@ const Footer = () => {
                     <nav className={"footer-nav"}>
                         <ul className={"footer-list"}>
                             <li className="footer-item">
-                                <Link className={"footer-link"} to={"#"}>
+                                <Link className={"footer-link"} to={"#about"}>
                                     about us
                                 </Link>
                             </li>
                             <li className="footer-item">
-                                <Link className={"footer-link"} to={"#"}>
-                                    blog
+                                <Link className={"footer-link"} to={"#plan"}>
+                                    plan
                                 </Link>
                             </li>
                             <li className="footer-item">
                                 <Link className={"footer-link"} to={"#"}>
-                                    sitemap
+                                    terms and conditions
                                 </Link>
                             </li>
                             <li className="footer-item">
@@ -77,45 +78,37 @@ const Footer = () => {
                                     faq
                                 </Link>
                             </li>
-                            <li className="footer-item">
-                                <Link className={"footer-link"} to={"#"}>
-                                    contact us
-                                </Link>
-                            </li>
+
                         </ul>
                     </nav>
                 </div>
                 <div className="footer-business footer-box">
                     <h3 className="footer-box-headtd">
-                        business
+                        contact detail
                     </h3>
                     <nav className={"footer-nav"}>
                         <ul className={"footer-list"}>
                             <li className="footer-item">
-                                <Link className={"footer-link"} to={"#"}>
-                                    sell on shopio
+                                <Link className={"footer-link"} to={"#"} style={{display: "flex", alignItems: "center" }}>
+                                    <span
+                                        style={{ marginRight: "5px"}}
+                                        className="">
+                                        <Mail style={{ height: "20px", width: "20px" }} className="footer_icon footer_icon-wa" />
+                                    </span>
+                                    admin@{window.location.origin}
                                 </Link>
                             </li>
+
                             <li className="footer-item">
-                                <Link className={"footer-link"} to={"#"}>
-                                    advertise on shopio
+                                <Link className={"footer-link"} to={"#"} style={{display: "flex", alignItems: "center" }}>
+                                    <span
+                                        style={{ marginRight: "5px" }}>
+                                        <LocationOn style={{ height: "20px", width: "20px" }} className="footer_icon footer_icon-twitter" />
+                                    </span>
+                                    no. 403, 4th floor, office tower, crown, shaikh zahed road, Dubai, U.A.E
                                 </Link>
                             </li>
-                            <li className="footer-item">
-                                <Link className={"footer-link"} to={"#"}>
-                                    media inquiries
-                                </Link>
-                            </li>
-                            <li className="footer-item">
-                                <Link className={"footer-link"} to={"#"}>
-                                    be an affliate
-                                </Link>
-                            </li>
-                            <li className="footer-item">
-                                <Link className={"footer-link"} to={"#"}>
-                                    deal of the day
-                                </Link>
-                            </li>
+
                         </ul>
                     </nav>
                 </div>

@@ -16,22 +16,22 @@ const person = [
     {
         "image": photo,
         "name": "hassan husseni",
-        "amount": "$5,700.455"
+        "amount": "$28,700.455"
     },
     {
         "image": photo2,
         "name": "lin wang",
-        "amount": "$5,500.500"
+        "amount": "$25,500.500"
     },
     {
         "image": photo3,
         "name": "ted fritz",
-        "amount": "$4,890.300"
+        "amount": "$24,890.300"
     },
     {
         "image": photo4,
         "name": "Ben Hadley",
-        "amount": "$4,500.300"
+        "amount": "$24,500.300"
     },
 ]
 

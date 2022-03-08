@@ -86,6 +86,9 @@
    display: grid;
    place-items: center;
    padding: 4rem 2rem;
+   &-warningText {
+      color: rgb(224, 8, 8);
+   }
    & > h2 {
       font-size: 3rem;
       text-transform: capitalize;

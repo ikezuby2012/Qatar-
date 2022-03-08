@@ -11,10 +11,6 @@ export const signUp = (data) =>
       // console.log("data coming from action " + dataObj);
       try {
          const res = await axios.post(process.env.REACT_APP_SignUpUserApi, data);
-         if (res.data.token) {
-            localStorage.getItem("token", JSON.stringify(res.data.token));
-            // console.log(res.data.token);
-         }
          console.log(res.data);
          dispatch({
             type: SIGNUP_SUCCESS,
@@ -40,6 +36,10 @@ export const login = (data) =>
       // console.log(process.env.REACT_APP_loginUserApi);
       try {
          const res = await axios.post(process.env.REACT_APP_loginUserApi, data);
+         if (res.data.token) {
+            localStorage.getItem("token", JSON.stringify(res.data.token));
+            // console.log(res.data.token);
+         }
          dispatch({
             type: LOGIN_SUCCESS,
             message: "Login successful!",

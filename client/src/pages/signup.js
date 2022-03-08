@@ -73,7 +73,6 @@ const Signup = ({ history }) => {
     };
 
     const onSubmit = async (e) => {
-        console.log(userObj);
         e.preventDefault();
         setLoading(true);
         if (password !== passwordConfirm) {
@@ -97,14 +96,16 @@ const Signup = ({ history }) => {
             console.log(data);
             dispatch(signUp(data))
                 .then(() => {
-                    console.log("logged in");
+                    // console.log(res);
+                    // console.log(userObj);
                     history.push("/login");
                     // window.location.reload();
                     setNameMsg("success");
                 })
-                .catch(() => {
+                .catch((err) => {
+                    // console.log(userObj.message);
                     setShowPopup(true);
-                    setNameMsg("email already taken");
+                    setNameMsg(userObj.message);
                 });
             setLoading(false);
         } else {
