@@ -9,7 +9,7 @@ const Header = () => {
     const toggleButton = (e) => setIsRes(!res);
     const closePanel = (e) => setIsRes(false);
     return (
-        <header class="header">
+        <header className="header">
             <div className="header-top">
                 <h1 className="header-logo">
                     Qatar

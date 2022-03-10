@@ -9,7 +9,7 @@ const initialState = {
 }
 
 const authReducer = (state = initialState, action) => {
-    console.log("its working");
+    // console.log("its working");
     switch (action.type) {
         case SIGNUP_SUCCESS:
             return {
@@ -19,7 +19,7 @@ const authReducer = (state = initialState, action) => {
                 message: action.message
             }
         case SIGNUP_FAILURE:
-            console.log("message is " + JSON.stringify(action.message));
+            // console.log("message is " + JSON.stringify(action.message));
             return {
                 ...state,
                 loggedIn: false,
@@ -27,7 +27,8 @@ const authReducer = (state = initialState, action) => {
                 message: action.message
             }
         case LOGIN_SUCCESS:
-            localStorage.setItem("token", JSON.stringify(action.payload.token));
+            // localStorage.setItem("token", JSON.stringify(action.payload.token));
+            // console.log("here from reducer");
             // let token2 = JSON.parse(localStorage.getItem("token"));
             return {
                 ...state,

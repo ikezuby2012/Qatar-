@@ -26,9 +26,13 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
 });
 
 exports.updateMe = catchAsync(async (req, res, next) => {
-    // console.log(req.user.id);
-    const { id } = req.params;
-    const user = await User.findByIdAndUpdate(id, req.body);
+    console.log(req.body);
+    const { id } = req.user;
+    console.log(id);
+    const user = await User.findByIdAndUpdate(id, req.body, {
+        new: true,
+        runValidators: true
+    });
 
     res.status(200).json({
         status: "success",

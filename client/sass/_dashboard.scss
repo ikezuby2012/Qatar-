@@ -695,11 +695,53 @@
    }
 }
 .dashHistory {
+   height: 89vh;
+   @media only screen and (max-width: 38.8125em) {
+      height: 100vh;
+   }
    &-box {
       padding: 2rem 4rem;
       margin: 2rem 1.5rem;
       background-color: var(--grey-light-2);
       box-shadow: var(--shadow-dark-1);
+
+      @media only screen and (max-width: 33.125em) {
+         padding: 1rem;
+      }
+   }
+   &-table {
+      margin: 0.3rem;
+   }
+   &-block {
+      padding: 1rem 0;
+   }
+   .hd {
+      @media only screen and (max-width: 38.8125em) {
+         display: none;
+      }
+      & > span {
+         font-size: 1.5rem;
+         color: var(--dark-text);
+      }
+   }
+   &-list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 0.8rem;
+      grid-row-gap: 1.8rem;
+      margin-bottom: 0.7rem;
+      align-items: center;
+      background-color: var(--grey-light-3);
+      padding: 0.6rem 0;
+      @media only screen and (max-width: 38.8125em) {
+         grid-template-columns: revert;
+         border-bottom: 1px solid var(--color-dark);
+      }
+
+      & > span {
+         font-size: $font-size;
+         color: var(--grey-dark-1);
+      }
    }
 }
 

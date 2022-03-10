@@ -1,7 +1,7 @@
-import React, {  useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import validator from "validator";
 import { useDispatch, useSelector } from "react-redux";
-import { updateMe } from '../../actions/auth';
+import { getUser, updateMe } from '../../actions/auth';
 import { createNewWallet } from '../../actions/wallet';
 
 import MainLayout from '../../components/dashboard/MainLayout';
@@ -28,17 +28,17 @@ const Profile = () => {
     const [color, setColor] = useState("");
     const [content, setContent] = useState("");
 
-    console.log(data);
+    // console.log(user);
     // useEffect(() => {
     //     return () => {
-    //         dispatch(getUserWallet(user.id));
+    //         dispatch(getUser(user.id));
     //     }
     // }, []);
 
     // useEffect(() => {
     //     const fetchData = () => {
     //         try {
-    //             dispatch(getUserWallet(user.id));
+    //             dispatch(getUser(user.id));
     //         } catch (err) {
     //             console.log(err);
     //         }
@@ -280,7 +280,7 @@ const Profile = () => {
                         <h2 className="dashWithdrawal-hdText">account information</h2>
                         {Object.keys(data).length !== 0 ?
                             <div className="profile-box-textBox">
-                                <h2 style={{fontSize: "17px"}}>
+                                <h2 style={{ fontSize: "17px" }}>
                                     <span>Balance </span>
                                     {/* <span>$ { data.balance}</span> */}
                                     <span>$ {data.data !== undefined ? data.data.balance : "0"}</span>

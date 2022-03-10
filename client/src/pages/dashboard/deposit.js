@@ -39,9 +39,10 @@ const Deposit = () => {
             user: user.id,
             transaction_id: trx,
             payment_method: payment,
-            amount: value,
+            amount: value * 1,
             transaction_type: "deposit"
         }
+        console.log(data);
         // console.log("ok from data");
         if (data) {
             dispatch(depositFund(data))

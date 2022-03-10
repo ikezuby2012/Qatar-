@@ -14,6 +14,7 @@ router.route("/deposit").post(deposit);
 router.route("/investment").post(investment);
 router.route("/withdrawal").post(withdrawal);
 
-router.patch("/deposit/:id", restrictUser("user"), approveDeposit)
+router.patch("/deposit/:id", restrictUser("user"), approveDeposit);
+router.get("/user/:id", getTransactionByUserId);
 
 module.exports = router;

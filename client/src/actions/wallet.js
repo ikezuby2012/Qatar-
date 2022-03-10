@@ -3,10 +3,11 @@ import {
     CREATE_WALLET_SUCCESS, CREATE_WALLET_FAILURE, GET_USER_WALLET_SUCCESS, GET_USER_WALLET_FAILURE
 } from "./types";
 
-let token = JSON.parse(localStorage.getItem("token"));
+
 
 export const handleRequest = (data, req, url, successType, failureType) =>
     async (dispatch) => {
+        let token = JSON.parse(localStorage.getItem("token"));
         try {
             const res = await axios[req](url, data, {
                 headers: {
@@ -35,8 +36,9 @@ export const createNewWallet = (data) =>
 
 export const getUserWallet = (id) =>
     async (dispatch) => {
+        let token = JSON.parse(localStorage.getItem("token"));
         // const dataObj = JSON.stringify(data);
-        // console.log(token);
+        console.log(token);
         try {
             // console.log(process.env.REACT_APP_GET_USER_WALLET);
             const res = await axios.get(`${process.env.REACT_APP_GET_USER_WALLET}/${id}`, {

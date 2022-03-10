@@ -83,6 +83,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     } else if (req.cookies.jwt) {
         token = req.cookies.jwt;
     }
+    // console.log(token);
     if (!token) {
         return next(new AppError("you are not logged In!, log in to gain access", 403));
     }
@@ -90,7 +91,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     // verify token
     const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
     //check if user exist
-    console.log(decoded.id);
+    // console.log(decoded.id);
     const freshUser = await User.findById(decoded.id);
     if (!freshUser) {
         return next(new AppError("the user belonging to this token does not exist!", 403))

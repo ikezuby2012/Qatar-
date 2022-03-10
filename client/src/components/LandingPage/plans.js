@@ -3,15 +3,15 @@ import React from 'react';
 const personal = [
     {
         "name": "starter",
-        "price": "100 - $500"
+        "price": "100 - $1,499"
     },
     {
         "name": "silver",
-        "price": "500 - $1,500"
+        "price": "1,500 - $4,999"
     },
     {
-        "name": "enthusiast",
-        "price": "1,500 - $5000"
+        "name": "gold",
+        "price": "5,000 - unlimited"
     }
 ]
 
@@ -35,9 +35,7 @@ const Plans = () => {
                     <h5 className="plan_cardPlan">${personal[0].price}</h5>
                     <div>
                         <p className="plan-text">
-                            Lorem, ipsum dolor sit amet consectetur  rtlStyle weight keys dku form
-                            adipisicing elit. Reiciendis commodi  distinctio!
-                            market
+                            starter pack for master, learning to trade with full maximum customer support and 27% referral bonus on each transaction.
                         </p>
                     </div>
                     <div className="plan-button">
@@ -50,8 +48,7 @@ const Plans = () => {
                     <h5 className="plan_cardPlan">${personal[1].price}</h5>
                     <div>
                         <p className="plan-text">
-                            Lorem, ipsum dolor sit amet consectetur
-                            adipisicing elit. Reiciendis commodi javascript feil switcher tempore distinctio!
+                            silver pack for immediate learning to trade with full maximum customer support and 27% referral bonus on each transaction
                         </p>
                     </div>
                     <div className="plan-button">
@@ -64,8 +61,7 @@ const Plans = () => {
                     <h5 className="plan_cardPlan">${personal[2].price}</h5>
                     <div>
                         <p className="plan-text">
-                            Lorem, ipsum dolor sit amet consectetur
-                            adipisicing elit. Reiciendis commodi javascript feil switcher tempore distinctio!
+                            Gold pack for masters, exploring the crypto world with full maximum customer support and 27% referral bonus on each transaction.
                         </p>
                     </div>
                     <div className="plan-button">

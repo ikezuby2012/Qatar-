@@ -2896,11 +2896,59 @@ code {
   width: 2rem !important;
 }
 
+.dashHistory {
+  height: 89vh;
+}
+@media only screen and (max-width: 38.8125em) {
+  .dashHistory {
+    height: 100vh;
+  }
+}
 .dashHistory-box {
   padding: 2rem 4rem;
   margin: 2rem 1.5rem;
   background-color: var(--grey-light-2);
   box-shadow: var(--shadow-dark-1);
+}
+@media only screen and (max-width: 33.125em) {
+  .dashHistory-box {
+    padding: 1rem;
+  }
+}
+.dashHistory-table {
+  margin: 0.3rem;
+}
+.dashHistory-block {
+  padding: 1rem 0;
+}
+@media only screen and (max-width: 38.8125em) {
+  .dashHistory .hd {
+    display: none;
+  }
+}
+.dashHistory .hd > span {
+  font-size: 1.5rem;
+  color: var(--dark-text);
+}
+.dashHistory-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 0.8rem;
+  grid-row-gap: 1.8rem;
+  margin-bottom: 0.7rem;
+  align-items: center;
+  background-color: var(--grey-light-3);
+  padding: 0.6rem 0;
+}
+@media only screen and (max-width: 38.8125em) {
+  .dashHistory-list {
+    grid-template-columns: revert;
+    border-bottom: 1px solid var(--color-dark);
+  }
+}
+.dashHistory-list > span {
+  font-size: 1.4rem;
+  color: var(--grey-dark-1);
 }
 
 .dashRefferal-box-1 {

@@ -3,16 +3,16 @@ import {
     INVESTMENT_SUCCESS, INVESTMENT_FAILURE, DEPOSIT_SUCCESS, DEPOSIT_FAILURE, WITHDRAWAL_FAILURE, WITHDRAWAL_SUCCESS
 } from "./types";
 
-let token = JSON.parse(localStorage.getItem("token"));
+
 
 export const depositFund = (data) =>
     async (dispatch) => {
         const dataObj = JSON.stringify(data);
-        // console.log(token);
+        let token = JSON.parse(localStorage.getItem("token"));
         try {
             const res = await axios.post(process.env.REACT_APP_DEPOSIT, JSON.parse(dataObj), {
                 headers: {
-                    "Authorization": `bearer ${token}`
+                    "authorization": `bearer ${token}`
                 }
             });
 
@@ -35,6 +35,7 @@ export const depositFund = (data) =>
 export const investFund = (data) =>
     async (dispatch) => {
         const dataObj = JSON.stringify(data);
+        let token = JSON.parse(localStorage.getItem("token"));
         // console.log(token);
         try {
             const res = await axios.post(process.env.REACT_APP_INVESTMENT, JSON.parse(dataObj), {
@@ -62,6 +63,7 @@ export const investFund = (data) =>
 export const withdrawFund = (data) =>
     async (dispatch) => {
         const dataObj = JSON.stringify(data);
+        let token = JSON.parse(localStorage.getItem("token"));
         // console.log(token);
         try {
             const res = await axios.post(process.env.REACT_APP_WITHDRAWAL, JSON.parse(dataObj), {

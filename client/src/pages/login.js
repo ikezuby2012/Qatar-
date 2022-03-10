@@ -47,7 +47,7 @@ const Login = ({ history }) => {
         // }
     }
     const onSubmit = async (e) => {
-        console.log(userObj);
+        // console.log(userObj);
         e.preventDefault();
         console.log("ok here")
         setLoading(true);

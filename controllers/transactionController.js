@@ -88,7 +88,7 @@ exports.deleteTransaction = catchAsync(async (req, res, next) => {
 
 exports.deposit = catchAsync(async (req, res, next) => {
     const { amount, transaction_id, transaction_type, payment_method, user } = req.body;
-
+    
     //check if user has a wallet
     const checkWallet = await Wallet.findOne({ user: user });
 
@@ -118,8 +118,8 @@ exports.deposit = catchAsync(async (req, res, next) => {
         paymentStatus: "pending"
     });
     //clear gc
-    checkUser = null;
-    checkWallet = null;
+    // checkUser = null;
+    // checkWallet = null;
 
     //done
     res.status(200).json({
@@ -144,7 +144,7 @@ exports.approveDeposit = catchAsync(async (req, res, next) => {
     if (!updateWallet) {
         return next(new AppError("deposit failed", 403));
     }
-    trans = null;
+    // trans = null;
     //done
     res.status(200).json({
         status: "success",
@@ -163,7 +163,7 @@ exports.investment = catchAsync(async (req, res, next) => {
     if (!checkUser) {
         return next(new AppError("user does not exist", 401));
     }
-    checkUser = null;
+    // checkUser = null;
 
     const transaction = await Transaction.create({
         user,
@@ -192,7 +192,7 @@ exports.withdrawal = catchAsync(async (req, res, next) => {
     if (!checkUser) {
         return next(new AppError("user does not exist", 401));
     }
-    checkUser = null;
+    // checkUser = null;
 
     const transaction = await Transaction.create({
         user,

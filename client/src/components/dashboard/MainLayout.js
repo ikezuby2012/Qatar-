@@ -19,6 +19,8 @@ const MainLayout = (props) => {
     const dispatch = useDispatch();
     // console.log(user);
 
+    
+
     const logout = () => {
         // dispatch(logout);
         // props.history.push("/login");
@@ -29,7 +31,7 @@ const MainLayout = (props) => {
         return () => {
             dispatch(getUserWallet(user.id));
         }
-    }, []);
+    }, [user.id]);
 
     useEffect(() => {
         const fetchData = () => {
@@ -39,7 +41,13 @@ const MainLayout = (props) => {
                 console.log(err);
             }
         }
-        fetchData();
+        const timer = setTimeout(() => {
+            fetchData();
+        }, 50);
+
+        return () => {
+            clearTimeout(timer);
+        }
     }, []);
 
     return (
