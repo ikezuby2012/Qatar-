@@ -64,7 +64,7 @@
 }
 //about
 .about {
-   padding: 2rem;
+   padding: 5rem 2rem;
    @media only screen and (max-width: 61.875em) {
       padding: 0.5rem;
    }
@@ -176,9 +176,9 @@
 .info {
    background-image: linear-gradient(
       120deg,
-      rgba(#00020a, 0.9),
-      rgba(#140e01, 0.9) 50%,
-      rgba(hsl(0, 0%, 0%), 0.9) 65%
+      rgba(#0f1322, 0.9),
+      rgba(#0c1924, 0.9) 50%,
+      rgba(hsl(213, 34%, 11%), 0.9) 65%
    );
    background-size: cover;
    background-position: top;
@@ -204,7 +204,7 @@
             rgba(#060813a4, 0.2) 50%,
             rgba(hsla(218, 80%, 2%, 0.2), 0.2) 65%
          ),
-         url(../src/utils/bg-img.jpg);
+         url(../src/utils/bg-img2.jpg);
       background-size: cover;
       height: 55vh;
       width: 52vh;
@@ -274,7 +274,7 @@
 //FEATURES
 .features {
    background-color: #e7e9eb;
-   padding: 6rem 0;
+   padding: 8rem 0;
    &-body {
       display: flex;
       flex-direction: row;
@@ -292,7 +292,7 @@
             rgba(#96989e83, 0.2),
             rgba(hsla(0, 0%, 100%, 0.301), 0.2)
          ),
-         url(../src/utils/bg-img2.jpeg);
+         url(../src/utils/bg-img5.jpg);
       background-size: cover;
       height: 55vh;
       width: 52vh;
@@ -361,7 +361,10 @@
    background-attachment: fixed;
    background-repeat: no-repeat;
    // height: 80vh;
-   padding: 3rem 4rem;
+   padding: 8rem 4rem;
+   @media only screen and (max-width: 53.125em) {
+      padding: 3rem 2rem;
+   }
 
    &-hd-h4 {
       font-size: 2.4rem !important;
@@ -450,7 +453,7 @@
 }
 //investor
 .investor {
-   padding: 5rem 8rem;
+   padding: 8rem 8rem;
    @media only screen and (max-width: 50.625em) {
       padding: 1rem 2rem;
    }
@@ -524,7 +527,7 @@
    background-attachment: fixed;
    background-repeat: no-repeat;
    // height: 80vh;
-   padding: 3rem 4rem;
+   padding: 8rem 4rem;
    @media only screen and (max-width: 35.625em) {
       display: none;
    }
@@ -582,7 +585,7 @@
    }
 }
 .plan {
-   padding: 3rem 4rem;
+   padding: 7rem 4rem;
    @media only screen and (max-width: 53.75em) {
       padding: 1rem 2rem;
    }
@@ -667,7 +670,7 @@
    }
    &-text {
       font-size: 1.8rem;
-      color: #85848b;
+      color: var(--grey-dark-1);
       text-transform: capitalize;
       // font-family: auto;
       text-align: center;
@@ -698,6 +701,14 @@
    }
 }
 .faq {
+   padding: 6rem 0;
+   @media only screen and (max-width: 55.975em) {
+      padding: 3rem 0;
+   }
+   @media only screen and (max-width: 35.975em) {
+      padding: 1rem 0;
+   }
+
    &-padding {
       display: flex;
       align-items: center;

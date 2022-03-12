@@ -712,6 +712,19 @@ code {
 .header_text-primary span {
   display: block;
 }
+.header_text-primary span:first-child {
+  font-size: 8rem;
+}
+@media only screen and (max-width: 53.125em) {
+  .header_text-primary span:first-child {
+    font-size: 5rem;
+  }
+}
+@media only screen and (max-width: 35.975em) {
+  .header_text-primary span:first-child {
+    font-size: 3.7rem;
+  }
+}
 .header_text-secondary {
   font-size: 2rem;
   font-weight: 400;
@@ -1047,7 +1060,7 @@ code {
 }
 
 .about {
-  padding: 2rem;
+  padding: 5rem 2rem;
 }
 @media only screen and (max-width: 61.875em) {
   .about {
@@ -1154,7 +1167,7 @@ code {
 }
 
 .info {
-  background-image: linear-gradient(120deg, rgba(0, 2, 10, 0.9), rgba(20, 14, 1, 0.9) 50%, rgba(0, 0, 0, 0.9) 65%);
+  background-image: linear-gradient(120deg, rgba(15, 19, 34, 0.9), rgba(12, 25, 36, 0.9) 50%, rgba(19, 27, 38, 0.9) 65%);
   background-size: cover;
   background-position: top;
   background-attachment: fixed;
@@ -1174,7 +1187,7 @@ code {
   justify-content: space-evenly;
 }
 .info-bg-img {
-  background-image: linear-gradient(120deg, rgba(13, 15, 24, 0.2), rgba(6, 8, 19, 0.2) 50%, rgba(1, 4, 9, 0.2) 65%), url(../src/utils/bg-img.jpg);
+  background-image: linear-gradient(120deg, rgba(13, 15, 24, 0.2), rgba(6, 8, 19, 0.2) 50%, rgba(1, 4, 9, 0.2) 65%), url(../src/utils/bg-img2.jpg);
   background-size: cover;
   height: 55vh;
   width: 52vh;
@@ -1250,7 +1263,7 @@ code {
 
 .features {
   background-color: #e7e9eb;
-  padding: 6rem 0;
+  padding: 8rem 0;
 }
 .features-body {
   display: flex;
@@ -1265,7 +1278,7 @@ code {
   }
 }
 .features-bg-img {
-  background-image: linear-gradient(120deg, rgba(150, 152, 158, 0.2), rgba(255, 255, 255, 0.2)), url(../src/utils/bg-img2.jpeg);
+  background-image: linear-gradient(120deg, rgba(150, 152, 158, 0.2), rgba(255, 255, 255, 0.2)), url(../src/utils/bg-img5.jpg);
   background-size: cover;
   height: 55vh;
   width: 52vh;
@@ -1325,7 +1338,12 @@ code {
   background-position: top;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  padding: 3rem 4rem;
+  padding: 8rem 4rem;
+}
+@media only screen and (max-width: 53.125em) {
+  .expert {
+    padding: 3rem 2rem;
+  }
 }
 .expert-hd-h4 {
   font-size: 2.4rem !important;
@@ -1409,7 +1427,7 @@ code {
 }
 
 .investor {
-  padding: 5rem 8rem;
+  padding: 8rem 8rem;
 }
 @media only screen and (max-width: 50.625em) {
   .investor {
@@ -1482,7 +1500,7 @@ code {
   background-position: top;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  padding: 3rem 4rem;
+  padding: 8rem 4rem;
 }
 @media only screen and (max-width: 35.625em) {
   .crypto {
@@ -1556,7 +1574,7 @@ code {
 }
 
 .plan {
-  padding: 3rem 4rem;
+  padding: 7rem 4rem;
 }
 @media only screen and (max-width: 53.75em) {
   .plan {
@@ -1645,7 +1663,7 @@ code {
 }
 .plan-text {
   font-size: 1.8rem;
-  color: #85848b;
+  color: var(--grey-dark-1);
   text-transform: capitalize;
   text-align: center;
 }
@@ -1673,6 +1691,19 @@ code {
   color: var(--color-grey-light-1);
 }
 
+.faq {
+  padding: 6rem 0;
+}
+@media only screen and (max-width: 55.975em) {
+  .faq {
+    padding: 3rem 0;
+  }
+}
+@media only screen and (max-width: 35.975em) {
+  .faq {
+    padding: 1rem 0;
+  }
+}
 .faq-padding {
   display: flex;
   align-items: center;

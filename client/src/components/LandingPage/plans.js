@@ -35,7 +35,7 @@ const Plans = () => {
                     <h5 className="plan_cardPlan">${personal[0].price}</h5>
                     <div>
                         <p className="plan-text">
-                            starter pack for master, learning to trade with full maximum customer support and 27% referral bonus on each transaction.
+                            starter pack for beginners, learning to trade with full maximum customer support and 27% referral bonus on each transaction.
                         </p>
                     </div>
                     <div className="plan-button">
