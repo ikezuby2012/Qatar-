@@ -6,7 +6,10 @@ import Popup from '../../components/utils/Popup';
 import NotiPopup from "../../components/utils/notiPopup";
 import MainLayout from '../../components/dashboard/MainLayout';
 
-import qrBtc from "../../utils/qrbtc.jpg";
+import qrBtc from "../../utils/btcqr-code.jpg";
+import qrBnb from "../../utils/bnbqr-code.jpg";
+import qrEth from "../../utils/ethqr-code.jpg";
+import qrUsdt from "../../utils/usdt.jpg";
 
 import Icon from "react-crypto-icons";
 import { AiOutlineDown, AiOutlineRight } from "react-icons/ai";
@@ -120,17 +123,78 @@ const Deposit = () => {
 
                         <form noValidate className="dp-form">
                             <div className="dp-form-group">
-                                <label className="dp-form-label" htmlFor="eth_add">ethereum address</label>
-                                <input type="text"
-                                    defaultValue={"0x5f6d4g57n747dbf6r7f74f7rf7nfbf6f6f6bf6de3j7eb"}
-                                    className="dp-form-input form-input"
-                                    placeholder="transaction id"
-                                    contentEditable={false}
-                                    id="eth_add"
-                                    ref={textAreaRef}
-                                    // value={email} error={errors.email}
-                                    required={true}
-                                />
+                                {
+                                    payment === "BTC" && (
+                                        <>
+                                            <label className="dp-form-label" htmlFor="eth_add">bitcoin address</label>
+                                            <input type="text"
+                                                defaultValue={"bc1qcv4wjssejvlycutz9c906k4dlfrmx56em83vsj"}
+                                                className="dp-form-input form-input"
+                                                placeholder="transaction id"
+                                                contentEditable={false}
+                                                id="eth_add"
+                                                ref={textAreaRef}
+                                                // value={email} error={errors.email}
+                                                required={true}
+                                            />
+                                        </>
+                                    )
+                                }
+
+                                {
+                                    payment === "ETH" && (
+                                        <>
+                                            <label className="dp-form-label" htmlFor="eth_add">ethereum address</label>
+                                            <input type="text"
+                                                defaultValue={"0xD822012454a1E95C1263d4a8D45278aC52AAe3F5"}
+                                                className="dp-form-input form-input"
+                                                placeholder="transaction id"
+                                                contentEditable={false}
+                                                id="eth_add"
+                                                ref={textAreaRef}
+                                                // value={email} error={errors.email}
+                                                required={true}
+                                            />
+                                        </>
+                                    )
+                                }
+
+                                {
+                                    payment === "BNB" && (
+                                        <>
+                                            <label className="dp-form-label" htmlFor="eth_add">binance cash address(bep 20)</label>
+                                            <input type="text"
+                                                defaultValue={"0xD822012454a1E95C1263d4a8D45278aC52AAe3F5"}
+                                                className="dp-form-input form-input"
+                                                placeholder="transaction id"
+                                                contentEditable={false}
+                                                id="eth_add"
+                                                ref={textAreaRef}
+                                                // value={email} error={errors.email}
+                                                required={true}
+                                            />
+                                        </>
+                                    )
+                                }
+
+{
+                                    payment === "USDT" && (
+                                        <>
+                                            <label className="dp-form-label" htmlFor="eth_add">usdt  address(trc 20)</label>
+                                            <input type="text"
+                                                defaultValue={"TBPhowjrrzeGgj8kEa6dsQs3ffj8nXDbyr"}
+                                                className="dp-form-input form-input"
+                                                placeholder="transaction id"
+                                                contentEditable={false}
+                                                id="eth_add"
+                                                ref={textAreaRef}
+                                                // value={email} error={errors.email}
+                                                required={true}
+                                            />
+                                        </>
+                                    )
+                                }
+
                                 <button onClick={onCopy} className="dp-form-btn">
                                     copy
                                 </button>
@@ -138,9 +202,35 @@ const Deposit = () => {
                             </div>
                         </form>
 
-                        <figure className="dp-figure">
-                            <img src={qrBtc} alt="qr_code" className="dp-img" />
-                        </figure>
+                        {
+                            payment === "BTC" && <>
+                                <figure className="dp-figure">
+                                    <img src={qrBtc} alt="qr_code" className="dp-img" />
+                                </figure>
+                            </>
+                        }
+                        {
+                            payment === "ETH" && <>
+                                <figure className="dp-figure">
+                                    <img src={qrEth} alt="qr_code" className="dp-img" />
+                                </figure>
+                            </>
+                        }
+                        {
+                            payment === "BNB" && <>
+                                <figure className="dp-figure">
+                                    <img src={qrBnb} alt="qr_code" className="dp-img" />
+                                </figure>
+                            </>
+                        }
+                        {
+                            payment === "USDT" && <>
+                                <figure className="dp-figure">
+                                    <img src={qrUsdt} alt="qr_code" className="dp-img" />
+                                </figure>
+                            </>
+                        }
+
 
                         <form onSubmit={(e) => onSubmit(e)} className="dashDeposit-Popup-form">
                             <div className="form-group">

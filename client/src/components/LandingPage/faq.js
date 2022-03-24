@@ -71,34 +71,34 @@ const Faq = () => {
     }
     const accumulateValue = () => {
         let num;
-        if (plan === "20% after 24 hours") {
+        if (plan === "10% after 24 hours") {
             let depoNum = deposit * 1;
-            num = depoNum + (depoNum * 20 / 100);
+            num = depoNum + (depoNum * 10 / 100);
             setValue(num);
         }
-        if (plan === "45% after 24 hours") {
+        if (plan === "17% after 24 hours") {
+            let depoNum = deposit * 1;
+            num = depoNum + (depoNum * 17 / 100);
+            setValue(num);
+        }
+        if (plan === "25% after 1 week") {
+            let depoNum = deposit * 1;
+            num = depoNum + (depoNum * 25 / 100);
+            setValue(num);
+        }
+        if (plan === "37% after week") {
+            let depoNum = deposit * 1;
+            num = depoNum + (depoNum * 37 / 100);
+            setValue(num);
+        }
+        if (plan === "45% after 1 month(s)") {
             let depoNum = deposit * 1;
             num = depoNum + (depoNum * 45 / 100);
             setValue(num);
         }
-        if (plan === "50% after 1 month") {
+        if (plan === "67% after 1 month(s)") {
             let depoNum = deposit * 1;
-            num = depoNum + (depoNum * 50 / 100);
-            setValue(num);
-        }
-        if (plan === "60% after 3 month(s)") {
-            let depoNum = deposit * 1;
-            num = depoNum + (depoNum * 60 / 100);
-            setValue(num);
-        }
-        if (plan === "70% after 5 month(s)") {
-            let depoNum = deposit * 1;
-            num = depoNum + (depoNum * 70 / 100);
-            setValue(num);
-        }
-        if (plan === "90% after 9 month(s)") {
-            let depoNum = deposit * 1;
-            num = depoNum + (depoNum * 90 / 100);
+            num = depoNum + (depoNum * 67 / 100);
             setValue(num);
         }
     }
@@ -242,10 +242,10 @@ const Faq = () => {
                                             id="20"
                                             name="ok"
                                             className="faq-calc-button"
-                                            value={"20% after 24 hours"}
+                                            value={"10% after 24 hours"}
                                             onClick={(e) => onChangePlan(e)}
                                         >
-                                            20% after 24 hours
+                                            10% after 24 hours
                                         </button>
                                     </li>
 
@@ -253,10 +253,10 @@ const Faq = () => {
                                         <button
                                             id="45"
                                             className="faq-calc-button"
-                                            value={"45% after 24 hours"}
+                                            value={"17% after 24 hours"}
                                             onClick={(e) => onChangePlan(e)}
                                         >
-                                            45% after 24 hours
+                                            17% after 24 hours
                                         </button>
                                     </li>
 
@@ -264,10 +264,10 @@ const Faq = () => {
                                         <button
                                             id="50"
                                             className="faq-calc-button"
-                                            value="50% after 1 month"
+                                            value="25% after 1 week"
                                             onClick={(e) => onChangePlan(e)}
                                         >
-                                            50% after 1 month
+                                            25% after 1 week
                                         </button>
                                     </li>
 
@@ -275,10 +275,10 @@ const Faq = () => {
                                         <button
                                             id="60"
                                             className="faq-calc-button"
-                                            value="60% after 3 month(s)"
+                                            value="37% after 1 week"
                                             onClick={(e) => onChangePlan(e)}
                                         >
-                                            60% after 3 month(s)
+                                            37% after 1 week
                                         </button>
                                     </li>
 
@@ -286,10 +286,10 @@ const Faq = () => {
                                         <button
                                             id="70"
                                             className="faq-calc-button"
-                                            value={"70% after 5 month(s)"}
+                                            value={"45% after 1 month(s)"}
                                             onClick={(e) => onChangePlan(e)}
                                         >
-                                            70% after 5 month(s)
+                                            45% after 1 month(s)
                                         </button>
                                     </li>
 
@@ -297,10 +297,10 @@ const Faq = () => {
                                         <button
                                             id="90"
                                             className="faq-calc-button"
-                                            value={"90% after 9 month(s)"}
+                                            value={"67% after 1 month(s)"}
                                             onClick={(e) => onChangePlan(e)}
                                         >
-                                            90% after 9 month(s)
+                                            67% after 1 month(s)
                                         </button>
                                     </li>
                                 </ul>

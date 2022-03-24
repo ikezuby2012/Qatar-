@@ -14,45 +14,45 @@ import { AiOutlineDown, AiOutlineRight } from "react-icons/ai";
 const personal = [
     {
         "name": "starter",
-        "price": "20% (24 hours)",
-        "min": "100",
+        "price": "10% (24 hours)",
+        "min": "300",
         "max": "999",
         "trade_duration": "24 hours"
     },
     {
         "name": "cooper",
-        "price": "45% (24 hours)",
+        "price": "17% (24 hours)",
         "min": "1000",
         "max": "2999",
         "trade_duration": "24 hours"
     },
     {
         "name": "enthusiast",
-        "price": "50% weekly profit",
+        "price": "25% weekly profit",
         "min": "3000",
         "max": "4999",
-        "trade_duration": "1 month"
+        "trade_duration": "1 week"
     },
     {
         "name": "silver",
-        "price": "60% weekly profit",
+        "price": "37% weekly profit",
         "min": "3000",
         "max": "4999",
-        "trade_duration": "3 month(s)"
+        "trade_duration": "1 week(s)"
     },
     {
         "name": "gold",
-        "price": "70% weekly profit",
+        "price": "45% monthly profit",
         "min": "5000",
         "max": "unlimited",
-        "trade_duration": "5 month(s)"
+        "trade_duration": "1 month(s)"
     },
     {
         "name": "diamond",
-        "price": "90% weekly profit",
+        "price": "67% monthly profit",
         "min": "9000",
         "max": "unlimited",
-        "trade_duration": "9 month(s)"
+        "trade_duration": "1 month(s)"
     }
 ]
 
@@ -144,40 +144,40 @@ const Investment = () => {
     }
     useEffect(() => {
         let num;
-        if (plan === "20% after 24 hours") {
+        if (plan === "10% after 24 hours") {
             let depoNum = value * 1;
-            num = depoNum + (depoNum * 20 / 100);
+            num = depoNum + (depoNum * 10 / 100);
             setEarning(num);
             setInvestment("starter");
         }
-        if (plan === "45% after 24 hours") {
+        if (plan === "17% after 24 hours") {
             let depoNum = value * 1;
-            num = depoNum + (depoNum * 45 / 100);
+            num = depoNum + (depoNum * 17 / 100);
             setEarning(num);
             setInvestment(personal[1].name);
         }
-        if (plan === "50% after 1 month") {
+        if (plan === "25% after 1 week") {
             setInvestment(personal[2].name);
             let depoNum = value * 1;
-            num = depoNum + (depoNum * 50 / 100);
+            num = depoNum + (depoNum * 25 / 100);
             setEarning(num);
         }
-        if (plan === "60% after 3 month(s)") {
+        if (plan === "37% after 1 week") {
             setInvestment(personal[3].name);
             let depoNum = value * 1;
-            num = depoNum + (depoNum * 60 / 100);
+            num = depoNum + (depoNum * 37 / 100);
             setEarning(num);
         }
-        if (plan === "70% after 5 month(s)") {
+        if (plan === "45% after 1 month") {
             setInvestment(personal[4].name);
             let depoNum = value * 1;
-            num = depoNum + (depoNum * 70 / 100);
+            num = depoNum + (depoNum * 45 / 100);
             setEarning(num);
         }
-        if (plan === "90% after 9 month(s)") {
+        if (plan === "67% after 1 month") {
             setInvestment(personal[5].name);
             let depoNum = value * 1;
-            num = depoNum + (depoNum * 90 / 100);
+            num = depoNum + (depoNum * 67 / 100);
             setEarning(num);
         }
     }, [value, plan])
@@ -234,10 +234,10 @@ const Investment = () => {
                                                     id="20"
                                                     name="ok"
                                                     className="faq-calc-button"
-                                                    value={"20% after 24 hours"}
+                                                    value={"10% after 24 hours"}
                                                     onClick={(e) => onChangePlan(e)}
                                                 >
-                                                    20% after 24 hours
+                                                    10% after 24 hours
                                                 </button>
                                             </li>
 
@@ -245,10 +245,10 @@ const Investment = () => {
                                                 <button
                                                     id="45"
                                                     className="faq-calc-button"
-                                                    value={"45% after 24 hours"}
+                                                    value={"17% after 24 hours"}
                                                     onClick={(e) => onChangePlan(e)}
                                                 >
-                                                    45% after 24 hours
+                                                    17% after 24 hours
                                                 </button>
                                             </li>
 
@@ -256,10 +256,10 @@ const Investment = () => {
                                                 <button
                                                     id="50"
                                                     className="faq-calc-button"
-                                                    value="50% after 1 month"
+                                                    value="25% after 1 week"
                                                     onClick={(e) => onChangePlan(e)}
                                                 >
-                                                    50% after 1 month
+                                                    25% after 1 week
                                                 </button>
                                             </li>
 
@@ -267,10 +267,10 @@ const Investment = () => {
                                                 <button
                                                     id="60"
                                                     className="faq-calc-button"
-                                                    value="60% after 3 month(s)"
+                                                    value="37% after 1 week"
                                                     onClick={(e) => onChangePlan(e)}
                                                 >
-                                                    60% after 3 month(s)
+                                                    37% after 1 week
                                                 </button>
                                             </li>
 
@@ -278,10 +278,10 @@ const Investment = () => {
                                                 <button
                                                     id="70"
                                                     className="faq-calc-button"
-                                                    value={"70% after 5 month(s)"}
+                                                    value={"45% after 1 month"}
                                                     onClick={(e) => onChangePlan(e)}
                                                 >
-                                                    70% after 5 month(s)
+                                                    45% after 1 month
                                                 </button>
                                             </li>
 
@@ -289,10 +289,10 @@ const Investment = () => {
                                                 <button
                                                     id="90"
                                                     className="faq-calc-button"
-                                                    value={"90% after 9 month(s)"}
+                                                    value={"67% after 1 month"}
                                                     onClick={(e) => onChangePlan(e)}
                                                 >
-                                                    90% after 9 month(s)
+                                                    67% after 1 month
                                                 </button>
                                             </li>
                                         </ul>
@@ -351,7 +351,7 @@ const Investment = () => {
                         </div>
                         <div className="plan-button">
                             <button
-                                id="20% after 24 hours"
+                                id="10% after 24 hours"
                                 onClick={(e) => openModal(e)}
                                 className="plan-btn">
                                 start now
@@ -373,7 +373,7 @@ const Investment = () => {
                         </div>
                         <div className="plan-button">
                             <button
-                                id="45% after 24 hours"
+                                id="17% after 24 hours"
                                 onClick={(e) => openModal(e)}
                                 className="plan-btn">start now</button>
                         </div>
@@ -393,7 +393,7 @@ const Investment = () => {
                         </div>
                         <div className="plan-button">
                             <button
-                                id="50% after 1 month"
+                                id="25% after 1 week"
                                 onClick={(e) => openModal(e)}
                                 className="plan-btn">start now</button>
                         </div>
@@ -413,7 +413,7 @@ const Investment = () => {
                         </div>
                         <div className="plan-button">
                             <button
-                                id="60% after 3 month(s)"
+                                id="37% after 1 week"
                                 onClick={(e) => openModal(e)}
                                 className="plan-btn">start now</button>
                         </div>
@@ -433,7 +433,7 @@ const Investment = () => {
                         </div>
                         <div className="plan-button">
                             <button
-                                id="70% after 5 month(s)"
+                                id="45% after 1 month"
                                 onClick={(e) => openModal(e)}
                                 className="plan-btn">start now</button>
                         </div>
@@ -453,7 +453,7 @@ const Investment = () => {
                         </div>
                         <div className="plan-button">
                             <button
-                                id="90% after 9 month(s)"
+                                id="67% after 1 month"
                                 onClick={(e) => openModal(e)}
                                 className="plan-btn">start now</button>
                         </div>

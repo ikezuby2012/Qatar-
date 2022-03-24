@@ -42,11 +42,15 @@ const Subscribers = () => {
             third();
             // setPrice(931);
             // setUsers(18000);
-
-
         }
+        const Timer = setTimeout(() => onScroll(), 500);
+
         window.addEventListener("scroll", onScroll);
-        return () => window.removeEventListener("scroll", onScroll);
+
+        return () => {
+            clearTimeout(Timer);
+            window.removeEventListener("scroll", onScroll);
+        }
     });
 
     return (

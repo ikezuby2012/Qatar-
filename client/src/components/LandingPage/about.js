@@ -40,17 +40,17 @@ const About = () => {
                     </p>
                 </div>
 
-                <div className="about-box about-box-diff">
+                <div className="about-box">
                     <div className="about-flex">
                         <div className="about-icon-box">
-                            <RiExchangeDollarLine className="about-icon about-icon-diff" />
+                            <RiExchangeDollarLine className="about-icon" />
                         </div>
-                        <h4 className="about-heading" style={{ color: "white" }}>
+                        <h4 className="about-heading" style={{ color: "black" }}>
                             instant exchange
                         </h4>
                     </div>
 
-                    <p className="about-text" style={{ color: "white" }}>
+                    <p className="about-text" style={{ color: "black" }}>
                         with our lightning speed servers, you are sure to get the best out of your investments
                     </p>
                 </div>
