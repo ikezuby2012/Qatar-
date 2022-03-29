@@ -11,8 +11,8 @@ const Footer = () => {
             <div className="footer-div">
                 <div className="footer-desc_box">
                     <h1 className="header-logo" style={{ color: "white", fontSize: "17px" }}>
-                        Qatar
-                        <span> trade</span>
+                        FidelCrest
+                        <span>Saving</span>
                     </h1>
                     <p>
                         we are officially registered certified company that meets an overall standard of quality
@@ -146,7 +146,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="footer-copyright">
-                <p>copyright Qatar invest &copy; 2019-{year}</p>
+                <p>copyright FidelCrestSaving (FCS) &copy; 2019-{year}</p>
             </div>
         </footer>
     );

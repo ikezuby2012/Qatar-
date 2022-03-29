@@ -3,7 +3,7 @@ const validator = require("validator");
 
 const { Schema, model } = mongoose;
 
-const UserSchema = new Schema({
+const NewsletterSchema = new Schema({
     email: {
         type: String,
         required: [true, "please provide an email address!"],
@@ -15,3 +15,5 @@ const UserSchema = new Schema({
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
 });
+
+module.exports = model("Newsletter", NewsletterSchema);

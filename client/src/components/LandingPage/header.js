@@ -12,8 +12,8 @@ const Header = () => {
         <header className="header">
             <div className="header-top">
                 <h1 className="header-logo">
-                    Qatar
-                    <span>Invest</span>
+                    FidelCrest
+                    <span>Saving</span>
                 </h1>
 
                 {/* responsive button */}

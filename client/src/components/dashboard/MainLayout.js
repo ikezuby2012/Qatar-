@@ -56,7 +56,7 @@ const MainLayout = (props) => {
                 <nav className="dashboard-side_bar">
                     <Link className="dash_link "to="/">
                     <h1 style={{ color: "white", fontSize: "17px", marginTop: "25px" }} className="header-logo">
-                        Qatar-invest
+                        FCS
                     </h1>
                     </Link>
 

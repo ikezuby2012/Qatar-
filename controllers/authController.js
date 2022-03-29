@@ -76,7 +76,7 @@ exports.logout = catchAsync(async (req, res, next) => {
 
 exports.protect = catchAsync(async (req, res, next) => {
     //getting the token and checking if it exist
-    console.log(req.headers);
+    //console.log(req.headers);
     let token;
     if (req.headers.authorization && req.headers.authorization.startsWith("bearer")) {
         token = req.headers.authorization.split(" ")[1];
@@ -107,7 +107,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 
 exports.restrictUser = (...roles) => (req, res, next) => {
     const { role } = req.user;
-    console.log(role);
+    //console.log(role);
     if (roles.includes(req.user.role)) {
         return next(new AppError("you don't have permission to perform this operation", 403));
     }

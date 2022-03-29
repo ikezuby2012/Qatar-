@@ -57,3 +57,7 @@ exports.getUser = catchAsync(async (req, res, next) => {
         data: user
     })
 });
+
+exports.getAllUsersRefferals = catchAsync(async (req, res, next) => {
+
+});

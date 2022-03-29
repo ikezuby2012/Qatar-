@@ -208,5 +208,8 @@ exports.withdrawal = catchAsync(async (req, res, next) => {
         status: "success",
         data: transaction
     });
+});
+
+exports.getLeaderBoard = catchAsync(async (req, res, next) => {
 
 });
