@@ -14,6 +14,7 @@ const errorHandler = require("./controllers/errorController");
 const AppError = require("./utils/AppError");
 const walletRouter = require("./routes/walletRoute");
 const transactionRouter = require("./routes/transactionRoute");
+const newsletterRouter = require("./routes/newsletterRoute");
 
 const app = express();
 
@@ -59,6 +60,7 @@ app.use("/api/v1/user", userRouter);
 app.use("/api/v1/util", utilRouter);
 app.use("/api/v1/transaction", transactionRouter);
 app.use("/api/v1/wallet", walletRouter);
+app.use("/api/v1/newsletter", newsletterRouter);
 
 //ping if api is working
 app.get("/", (req, res) => {
