@@ -1,8 +1,8 @@
-
 const User = require("../models/userModel");
 const AppError = require("../utils/AppError");
 const catchAsync = require("../utils/catchAsync");
 const APIFeatures = require("../utils/apiFeatures");
+const factory = require("./handleFactory");
 
 exports.getAllUsers = catchAsync(async (req, res, next) => {
     const features = new APIFeatures(User.find(), req.query)
@@ -39,12 +39,9 @@ exports.updateMe = catchAsync(async (req, res, next) => {
         data: user
     })
 });
-exports.updateUser = catchAsync(async (req, res, next) => {
+exports.updateUser = factory.updateOne(User);
+exports.deleteUser = factory.deleteOne(User);
 
-});
-exports.deleteUser = catchAsync(async (req, res, next) => {
-
-});
 exports.getUser = catchAsync(async (req, res, next) => {
     const user = await User.findById(req.params.id);
 
@@ -58,6 +55,23 @@ exports.getUser = catchAsync(async (req, res, next) => {
     })
 });
 
-exports.getAllUsersRefferals = catchAsync(async (req, res, next) => {
+exports.getAllUsersReferrals = catchAsync(async (req, res, next) => {
+    const { id } = req.params;
 
+    const data = await User.aggregate([
+        {
+            $match: {
+                "referrals": mongoose.Types.ObjectId(id)
+            }
+        }
+    ]);
+
+    if (!data) {
+        return next(new AppError("no user found with that id", 404));
+    }
+
+    res.status(200).json({
+        status: "success",
+        data
+    });
 });

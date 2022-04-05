@@ -33,6 +33,9 @@ const TransactionSchema = new Schema({
     investment_plan: {
         type: String,
     },
+    end_time: {
+        type: Date,
+    },
     potential_earning: {
         type: Number,
         min: [0, "potential earning must not be less than 0"]

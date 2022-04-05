@@ -21,7 +21,7 @@ const app = express();
 //<-- serving static files
 app.use(express.static(`${__dirname}/public`));
 
-if (process.env.NODE_ENV === "development") console.log(process.memoryUsage());
+// if (process.env.NODE_ENV === "development") console.log(process.memoryUsage());
 
 //cors
 app.use(cors());
@@ -30,12 +30,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 app.use(cookieParser());
 if (process.env.NODE_ENV === "production") {
-// data sanitization against noSql query injection
-app.use(mongoSanitize());
-//<-- data sanitisation against xss attacks
-app.use(xss());
+    // data sanitization against noSql query injection
+    app.use(mongoSanitize());
+    //<-- data sanitisation against xss attacks
+    app.use(xss());
 }
-
 
 
 app.use(compression());

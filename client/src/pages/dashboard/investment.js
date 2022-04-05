@@ -106,7 +106,7 @@ const Investment = () => {
         console.log("it's here")
 
         const data = {
-            user: user.id,
+            // user: user.id,
             amount,
             transaction_type: "investment",
             potential_earning: earning,

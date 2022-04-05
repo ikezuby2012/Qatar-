@@ -46,7 +46,7 @@ export const signUp = (data) =>
          return Promise.resolve();
       } catch (err) {
          const { error } = err.response.data;
-         let message;
+         let message = "something went wrong!";
          if (error.code === 11000) message = "email already exist!"
          dispatch({
             type: SIGNUP_FAILURE,

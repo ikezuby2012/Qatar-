@@ -43,7 +43,7 @@ const UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Transaction",
     },
-    refferals: {
+    referrals: {
         type: Schema.Types.ObjectId,
         ref: "User",
     },
@@ -89,7 +89,7 @@ const UserSchema = new Schema({
 });
 UserSchema.pre(/^find/, function (next) {
     this.populate({
-        path: "refferals",
+        path: "referrals",
         select: "name email role"
     })
         .populate("wallet")

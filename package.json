@@ -14,6 +14,7 @@
   "author": "zuby",
   "license": "ISC",
   "devDependencies": {
+    "@types/node-cron": "^3.0.1",
     "concurrently": "^6.4.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
@@ -34,8 +35,10 @@
     "express-mongo-sanitize": "*",
     "express-rate-limit": "*",
     "jsonwebtoken": "*",
+    "moment": "^2.29.1",
     "mongoose": "*",
     "morgan": "*",
+    "node-cron": "^3.0.0",
     "validator": "*",
     "xss-clean": "*"
   },

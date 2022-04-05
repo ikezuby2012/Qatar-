@@ -7,7 +7,7 @@ const Authlayout = ({ children }) => {
                 <div className="auth-bg-img" >
                     <div className="auth-text">
                         <h2>
-                            Qatar invest
+                            FCS
                         </h2>
                         <h4>build your future with investment</h4>
                         <p>
@@ -16,7 +16,7 @@ const Authlayout = ({ children }) => {
                         </p>
                     </div>
                     <div className="auth-copyright">
-                        <p>copyright Qatar invest &copy; 2019-{new Date().getFullYear()}</p>
+                        <p>Copyright FidelCrestSaving &copy; 2019-{new Date().getFullYear()}</p>
                     </div>
                 </div>
                 <div className="auth-box">

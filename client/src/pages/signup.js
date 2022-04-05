@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { signUp } from "../actions/auth";
-import { NavLink, Link } from "react-router-dom";
+import validator from "validator";
+import { NavLink, Link, useParams } from "react-router-dom";
 
 import Authlayout from '../components/auth/authLayout';
 import AuthPopup from '../components/utils/authPopup';
 
 const Signup = ({ history }) => {
+    let { id } = useParams();
     const dispatch = useDispatch();
     let userObj;
     userObj = useSelector((state) => state.user);
@@ -24,6 +26,7 @@ const Signup = ({ history }) => {
     const [loading, setLoading] = useState(false);
     const [isDisabled, setIsDisabled] = useState(true);
     const [showPopup, setShowPopup] = useState(false);
+    const [reff, setReff] = useState(null);
 
     const onEmailChange = (e) => {
         setState((state) => ({
@@ -74,6 +77,9 @@ const Signup = ({ history }) => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+        if (validator.isMongoId(id)) {
+            setReff(id);
+        }
         setLoading(true);
         if (password !== passwordConfirm) {
             setPasswordError(true);
@@ -92,6 +98,7 @@ const Signup = ({ history }) => {
                 email: state.email,
                 password: password,
                 passwordConfirm: passwordConfirm,
+                referrals: reff
             };
             console.log(data);
             dispatch(signUp(data))

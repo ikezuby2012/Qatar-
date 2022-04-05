@@ -89,6 +89,20 @@ const MainLayout = (props) => {
                                     <span>transactions</span>
                                 </NavLink>
                             </li>
+
+                            <li className="dashboard-sideNav-item">
+                                <NavLink className="dashboard-sideNav-link" to="/dashboard/transaction">
+                                    <span><Payment className="dashboard-sideNav-logo" /></span>
+                                    <span>leaderboard</span>
+                                </NavLink>
+                            </li>
+
+                            <li className="dashboard-sideNav-item">
+                                <NavLink className="dashboard-sideNav-link" to="/dashboard/transaction">
+                                    <span><Payment className="dashboard-sideNav-logo" /></span>
+                                    <span>approve request</span>
+                                </NavLink>
+                            </li>
                         </ul>
                     </>}
 
