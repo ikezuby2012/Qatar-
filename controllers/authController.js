@@ -116,5 +116,12 @@ exports.restrictUser = (...roles) => (req, res, next) => {
 }
 
 exports.createAdminUser = catchAsync(async (req, res, next) => {
+    const { id } = req.user;
 
+    const user = await User.findByIdAndUpdate(id, {role: "admin"});
+
+    res.status(200).json({
+        status: "success",
+        data: user
+    })
 });
