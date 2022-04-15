@@ -37,7 +37,7 @@ export const signUp = (data) =>
       // console.log("data coming from action " + dataObj);
       try {
          const res = await axios.post(process.env.REACT_APP_SignUpUserApi, data);
-         console.log(res.data);
+         // console.log(res.data);
          dispatch({
             type: SIGNUP_SUCCESS,
             message: "success",
@@ -65,7 +65,7 @@ export const login = (data) =>
          if (res.data.token) {
             // console.log("here from action");
             localStorage.setItem("token", JSON.stringify(res.data.token));
-            console.log(res.data.token);
+            // console.log(res.data.token);
          }
          dispatch({
             type: LOGIN_SUCCESS,

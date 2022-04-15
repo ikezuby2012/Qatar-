@@ -38,7 +38,7 @@ export const getUserWallet = (id) =>
     async (dispatch) => {
         let token = JSON.parse(localStorage.getItem("token"));
         // const dataObj = JSON.stringify(data);
-        console.log(token);
+        // console.log(token);
         try {
             // console.log(process.env.REACT_APP_GET_USER_WALLET);
             const res = await axios.get(`${process.env.REACT_APP_GET_USER_WALLET}/${id}`, {
@@ -55,9 +55,10 @@ export const getUserWallet = (id) =>
             return Promise.resolve();
         } catch (err) {
             const { error } = err.response.data;
+            // console.log(err.response);
             dispatch({
                 type: GET_USER_WALLET_FAILURE,
-                message: error
+                message: err.response
             });
             return Promise.reject();
         }

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/auth";
@@ -10,16 +10,18 @@ import {
     AccountCircle, AssignmentReturn, Store, Poll, Payment, Dashboard
 } from "@material-ui/icons";
 import { AiFillDashboard } from "react-icons/ai";
-import { FaHandHoldingUsd, FaHistory } from "react-icons/fa";
-import { BsCreditCard } from "react-icons/bs";
-import { RiCoinsFill, RiTeamLine } from "react-icons/ri";
+// import { GrTransaction } from "react-icons/gr";
+import { MdLeaderboard } from "react-icons/md";
+import { FaHandHoldingUsd, FaHistory, FaUserCog } from "react-icons/fa";
+import { BsCreditCard, BsUiChecks, BsWallet } from "react-icons/bs";
+import { RiCoinsFill, RiTeamLine, RiTableAltFill } from "react-icons/ri";
 
 const MainLayout = (props) => {
     const { user } = useSelector((state) => state.user);
     const dispatch = useDispatch();
     // console.log(user);
 
-    
+
 
     const logout = () => {
         // dispatch(logout);
@@ -54,16 +56,16 @@ const MainLayout = (props) => {
         <section className="dashboard">
             <div className="dashboard-container">
                 <nav className="dashboard-side_bar">
-                    <Link className="dash_link "to="/">
-                    <h1 style={{ color: "white", fontSize: "17px", marginTop: "25px" }} className="header-logo">
-                        FCS
-                    </h1>
+                    <Link className="dash_link " to="/">
+                        <h1 style={{ color: "white", fontSize: "17px", marginTop: "25px" }} className="header-logo">
+                            FCS
+                        </h1>
                     </Link>
 
                     {user.role === "admin" && <>
                         <ul className="dashboard-sideNav">
-                            <li className="dashboard-sideNav-item dashboard-sideNav-item--active">
-                                <NavLink className="dashboard-sideNav-link" activeClassName="" to="/dashboard">
+                            <li className="dashboard-sideNav-item">
+                                <NavLink className="dashboard-sideNav-link dashboard-sideNav-item--active" activeClassName="dashboard-sideNav-link--active" to="/dashboard/home">
                                     <span><AiFillDashboard className="dashboard-sideNav-logo" /></span>
                                     <span>dashboard</span>
                                 </NavLink>
@@ -71,35 +73,35 @@ const MainLayout = (props) => {
 
                             <li className="dashboard-sideNav-item">
                                 <NavLink className="dashboard-sideNav-link" to="/dashboard/wallet">
-                                    <span><Dashboard className="dashboard-sideNav-logo" /></span>
+                                    <span><BsWallet className="dashboard-sideNav-logo" /></span>
                                     <span>wallets</span>
                                 </NavLink>
                             </li>
 
                             <li className="dashboard-sideNav-item">
                                 <NavLink className="dashboard-sideNav-link" to="/dashboard/users">
-                                    <span><Poll className="dashboard-sideNav-logo" /></span>
+                                    <span><FaUserCog className="dashboard-sideNav-logo" /></span>
                                     <span>users</span>
                                 </NavLink>
                             </li>
 
                             <li className="dashboard-sideNav-item">
-                                <NavLink className="dashboard-sideNav-link" to="/dashboard/transaction">
-                                    <span><Payment className="dashboard-sideNav-logo" /></span>
+                                <NavLink className="dashboard-sideNav-link" to="/dashboard/trx">
+                                    <span><RiCoinsFill className="dashboard-sideNav-logo" /></span>
                                     <span>transactions</span>
                                 </NavLink>
                             </li>
 
                             <li className="dashboard-sideNav-item">
-                                <NavLink className="dashboard-sideNav-link" to="/dashboard/transaction">
-                                    <span><Payment className="dashboard-sideNav-logo" /></span>
-                                    <span>leaderboard</span>
+                                <NavLink className="dashboard-sideNav-link" to="/dashboard/leaderboard">
+                                    <span><MdLeaderboard className="dashboard-sideNav-logo" /></span>
+                                    <span>leaderBoard</span>
                                 </NavLink>
                             </li>
 
                             <li className="dashboard-sideNav-item">
-                                <NavLink className="dashboard-sideNav-link" to="/dashboard/transaction">
-                                    <span><Payment className="dashboard-sideNav-logo" /></span>
+                                <NavLink className="dashboard-sideNav-link" to="/dashboard/approve">
+                                    <span><BsUiChecks className="dashboard-sideNav-logo" /></span>
                                     <span>approve request</span>
                                 </NavLink>
                             </li>
@@ -142,6 +144,14 @@ const MainLayout = (props) => {
                                     <span>deposit funds</span>
                                 </NavLink>
                             </li>
+
+                            <li className="dashboard-sideNav-item">
+                                <NavLink className="dashboard-sideNav-link" to="/dashboard/myInvestment">
+                                    <span><RiTableAltFill className="dashboard-sideNav-logo" /></span>
+                                    <span>my investment</span>
+                                </NavLink>
+                            </li>
+
 
                             <li className="dashboard-sideNav-item">
                                 <NavLink className="dashboard-sideNav-link" to="/dashboard/refferal">

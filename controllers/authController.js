@@ -109,14 +109,14 @@ exports.protect = catchAsync(async (req, res, next) => {
 exports.restrictUser = (...roles) => (req, res, next) => {
     const { role } = req.user;
     //console.log(role);
-    if (roles.includes(req.user.role)) {
+    if (roles.includes(role)) {
         return next(new AppError("you don't have permission to perform this operation", 403));
     }
     next();
 }
 
 exports.createAdminUser = catchAsync(async (req, res, next) => {
-    const { id } = req.user;
+    const { id } = req.params;
 
     const user = await User.findByIdAndUpdate(id, {role: "admin"});
 

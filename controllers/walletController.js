@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
-
 const User = require("../models/userModel");
 const Wallet = require("../models/walletModel");
 const AppError = require("../utils/AppError");
 const catchAsync = require("../utils/catchAsync");
 const APIFeatures = require("../utils/apiFeatures");
+const factory = require("./handleFactory");
 
 exports.getAllWallets = catchAsync(async (req, res, next) => {
     const features = new APIFeatures(Wallet.find(), req.query)
@@ -31,7 +31,7 @@ exports.createNewWallet = catchAsync(async (req, res, next) => {
         user
     });
     //clear gc
-    checkWallet = undefined;
+    // checkWallet = null;
 
     //done
     res.status(201).json({
@@ -75,11 +75,10 @@ exports.getWalletByUserId = catchAsync(async (req, res, next) => {
         data
     })
 });
-exports.updateWallet = catchAsync(async (req, res, next) => {
+exports.updateWallet = factory.updateOne(Wallet);
 
-});
 exports.getWalletById = catchAsync(async (req, res, next) => {
-    const wallet = await Wallet.findById(req.params.id);
+    const wallet = await Wallet.findById(req.params.id).populate("user");
 
     if (!wallet) {
         return next(new AppError("no wallet found with that id", 404));
@@ -91,6 +90,4 @@ exports.getWalletById = catchAsync(async (req, res, next) => {
         data: wallet
     })
 });
-exports.deleteWallet = catchAsync(async (req, res, next) => {
-
-});
+exports.deleteWallet = factory.deleteOne(Wallet);

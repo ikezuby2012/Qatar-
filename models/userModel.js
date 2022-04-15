@@ -77,6 +77,13 @@ const UserSchema = new Schema({
     bnb: {
         type: String
     },
+    country: {
+        type: String
+    },
+    first_timer_bonus: {
+        type: Boolean,
+        default: false
+    },
     active: {
         type: Boolean,
         default: true,
@@ -90,7 +97,7 @@ const UserSchema = new Schema({
 UserSchema.pre(/^find/, function (next) {
     this.populate({
         path: "referrals",
-        select: "name email role"
+        select: "name email role country"
     })
         .populate("wallet")
         .populate("transactions");

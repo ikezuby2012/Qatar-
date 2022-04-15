@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { signUp } from "../actions/auth";
 import validator from "validator";
@@ -28,6 +28,13 @@ const Signup = ({ history }) => {
     const [showPopup, setShowPopup] = useState(false);
     const [reff, setReff] = useState(null);
 
+
+    useEffect(() => {
+        if (validator.isMongoId(id)) {
+            setReff(id);
+        }
+    }, [id]);
+
     const onEmailChange = (e) => {
         setState((state) => ({
             ...state,
@@ -37,7 +44,7 @@ const Signup = ({ history }) => {
             /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
         if (pattern.test(e.target.value)) {
             e.persist();
-            console.log("hit here!");
+            // console.log("hit here!");
             setState((state) => ({
                 ...state,
                 email: e.target.value
@@ -77,9 +84,6 @@ const Signup = ({ history }) => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        if (validator.isMongoId(id)) {
-            setReff(id);
-        }
         setLoading(true);
         if (password !== passwordConfirm) {
             setPasswordError(true);

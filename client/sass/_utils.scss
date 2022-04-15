@@ -110,18 +110,16 @@
          }
       }
       position: absolute;
-      top: 5%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 35%;
+      width: 45%;
       border-bottom-right-radius: 1rem;
       border-bottom-left-radius: 1rem;
       padding: 2rem;
       background-image: linear-gradient(
          to right bottom,
-         rgba(117, 32, 11, 0.932),
-         rgba(156, 48, 15, 0.829)
+         rgba(248, 23, 23, 0.8),
+         rgba(247, 23, 23, 0.8)
       );
+      z-index: 999999999999;
       color: #fff;
 
       display: flex;

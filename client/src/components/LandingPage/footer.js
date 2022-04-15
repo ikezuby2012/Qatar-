@@ -15,7 +15,7 @@ const Footer = () => {
                         <span>Saving</span>
                     </h1>
                     <p>
-                        we are officially registered certified company that meets an overall standard of quality
+                    Fidelcrestsaving.com is owned and operated by Fidelcrest group Ltd, registered office at Arch. Makariou III & 1-7 Evagorou, MITSI 3, 1st floor, office 102 C, 1065 Nicosia, Cyprus (Company number HE413263)
                     </p>
                 </div>
                 <div className="footer-policy footer-box">
@@ -105,7 +105,7 @@ const Footer = () => {
                                         style={{ marginRight: "5px" }}>
                                         <LocationOn style={{ height: "20px", width: "20px" }} className="footer_icon footer_icon-twitter" />
                                     </span>
-                                    no. 403, 4th floor, office tower, crown, shaikh zahed road, Dubai, U.A.E
+                                    Arch. Makariou III & 1-7 Evagorou, MITSI 3, 1st floor, office 102 C1065 – Nicosia, Cyprus
                                 </Link>
                             </li>
 

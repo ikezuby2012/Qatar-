@@ -35,7 +35,7 @@ const Plans = () => {
                     <h5 className="plan_cardPlan">${personal[0].price}</h5>
                     <div>
                         <p className="plan-text">
-                            starter pack for beginners, learning to trade with full maximum customer support and 27% referral bonus on each transaction.
+                            Choose an account size and reach the maximum profit target. Trade all available assets. Your trading style is completely up to you!
                         </p>
                     </div>
                     <div className="plan-button">
@@ -48,7 +48,7 @@ const Plans = () => {
                     <h5 className="plan_cardPlan">${personal[1].price}</h5>
                     <div>
                         <p className="plan-text">
-                            silver pack for immediate learning to trade with full maximum customer support and 27% referral bonus on each transaction
+                            Continue trading with the account and prove you weren’t just lucky in this phase. You will keep up to 30% of reached min. profit target.
                         </p>
                     </div>
                     <div className="plan-button">
@@ -61,7 +61,7 @@ const Plans = () => {
                     <h5 className="plan_cardPlan">${personal[2].price}</h5>
                     <div>
                         <p className="plan-text">
-                            Gold pack for masters, exploring the crypto world with full maximum customer support and 27% referral bonus on each transaction.
+                            Gold pack for masters, Your commission is up to 67% of all profits made after each trading period. 
                         </p>
                     </div>
                     <div className="plan-button">

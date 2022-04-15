@@ -19,7 +19,7 @@ const History = () => {
                         "authorization": `bearer ${token}`
                     }
                 });
-                console.log(res.data);
+                // console.log(res.data);
                 setData(res.data.data);
                 setLoading(false);
             } catch (err) {
@@ -43,7 +43,8 @@ const History = () => {
                     {loading && <div className="error mt-6">
                         <div style={{ height: "4rem", width: "4rem", padding: "2rem" }} className="loading-spinner" />
                     </div>}
-                    {data.length !== 0 ?
+                    {
+                        data.length !== 0 ?
                         <div className="dashHistory-table">
                             <div className="dashHistory-block">
                                 <ul>

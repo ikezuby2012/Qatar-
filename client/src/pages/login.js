@@ -49,20 +49,20 @@ const Login = ({ history }) => {
     const onSubmit = async (e) => {
         // console.log(userObj);
         e.preventDefault();
-        console.log("ok here")
+        // console.log("ok here")
         setLoading(true);
         console.log(passwordError, emailError);
         if (
             passwordError === false &&
             emailError === false
         ) {
-            console.log("here!");
+            // console.log("here!");
 
             const data = {
                 email,
                 password
             };
-            console.log(data);
+            // console.log(data);
             dispatch(login(data))
                 .then(() => {
                     // console.log("logged in");

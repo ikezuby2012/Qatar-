@@ -10,27 +10,30 @@ const AppError = require("../utils/AppError");
 const catchAsync = require("../utils/catchAsync");
 const APIFeatures = require("../utils/apiFeatures");
 
-const incInvestment = catchAsync(async (req, res, next) => {
+const incInvestment = async (req, res, next) => {
     const investments = await Transaction.find(
         {
             transaction_type: "investment",
             payment_status: "pending"
         }
     );
+    // console.log(investments);
 
     for (let el of investments) {
-        if (moment().isAfter(el.end_time, "hour")) {
-            // console.log(el);
+        if (moment().isAfter(el.end_time, "minute")) {
+            console.log(el);
 
             // if its true increment user wallet
-            let trans = await Transaction.findOne(
-                { _id: el.id },
-                { $set: { payment_status: "success" } });
+            let trans = await Transaction.findOne({ _id: el.id });
             // console.log(trans.user, trans.amount);
 
-            const { _id, user, amount, potential_earning, payment_status } = trans;
-            
-            //check if user has a wallet
+            const { _id, id, user, amount, potential_earning, payment_status } = trans;
+
+            //set payment_status to success
+            // console.log(_id, id);
+            await Transaction.updateOne({ _id: _id }, { $set: { payment_status: "success" } })
+
+            // check if user has a wallet
             const checkWallet = await Wallet.findOne({ user: user });
 
             if (!checkWallet) {
@@ -43,15 +46,14 @@ const incInvestment = catchAsync(async (req, res, next) => {
             await Wallet.updateOne(
                 { user: user },
                 { $inc: { balance: potential_earning } });
-            //set payment_status to success
 
         }
     }
     // console.log(investments);
-});
-
-cron.schedule('*/10 * * * *', () => {
-    console.log('running every 10 minutes');
+};
+// incInvestment();
+cron.schedule('* * * * *', () => {
+    console.log('running every minute');
     incInvestment();
 });
 
@@ -173,21 +175,40 @@ exports.deposit = catchAsync(async (req, res, next) => {
     });
 });
 
-exports.approveDeposit = catchAsync(async (req, res, next) => {
+exports.approveTransaction = catchAsync(async (req, res, next) => {
     let { id } = req.params;
-    //confirm deposit
+    let updateWallet;
+    // console.log(type);
+    //increment user wallet
+    let trans = await Transaction.findById(
+        {
+            _id: id,
+            payment_status: "pending"
+        });
+    // console.log(trans.user, trans.amount);
+    const { user, amount, transaction_type } = trans;
+    const _user = await User.findOne({ _id: user });
+    //pay first timer alaye
+    console.log(_user);
+    if (_user.first_timer_bonus === false) {
+        await Wallet.updateOne({ user: user }, { $inc: { balance: 1000 } });
+        await User.updateOne({ _id: user }, { $set: { first_timer_bonus: true } });
+    }
+    if (transaction_type === "deposit") {
+        updateWallet = await Wallet.updateOne({ user: user }, { $inc: { balance: amount } });
+    }
+
+    if (transaction_type === "withdrawal") {
+        updateWallet = await Wallet.updateOne({ user: user }, { $inc: { balance: -amount } });
+    }
+
+    // console.log("update wallet" + updateWallet);
+    if (!updateWallet) {
+        return next(new AppError("transaction failed", 403));
+    }
     const transaction = await Transaction.findByIdAndUpdate(req.params.id, {
         payment_status: "success"
     });
-    //increment user wallet
-    let trans = await Transaction.findOne({ _id: id });
-    // console.log(trans.user, trans.amount);
-    const { user, amount } = trans;
-    const updateWallet = await Wallet.updateOne({ user: user }, { $inc: { balance: amount } });
-    // console.log("update wallet" + updateWallet);
-    if (!updateWallet) {
-        return next(new AppError("deposit failed", 403));
-    }
     // trans = null;
     //done
     res.status(200).json({
@@ -234,13 +255,25 @@ exports.investment = catchAsync(async (req, res, next) => {
     if (investment_plan === "enthusiast" || investment_plan === "silver") endDate = moment().add(1, "W").format("LLLL");
     if (investment_plan === "gold" || investment_plan === "diamond") endDate = moment().add(1, "M").format("LLLL");
 
-    console.log(endDate);
+    // console.log(endDate);
 
     let checkUser = await User.findOne({ _id: user });
     if (!checkUser) {
         return next(new AppError("user does not exist", 401));
     }
     // checkUser = null;
+
+    //check user balance
+    const _bal = await Wallet.findOne({ user: user });
+    // console.log(_bal);
+    if (amount > _bal.balance) {
+        return next(new AppError("insufficient balance", 403));
+    }
+
+    //decrement fund from user wallet
+    await Wallet.updateOne(
+        { user: user },
+        { $inc: { balance: -amount } });
 
     const transaction = await Transaction.create({
         user,
@@ -292,10 +325,15 @@ exports.getLeaderBoard = catchAsync(async (req, res, next) => {
     const doc = await Wallet.aggregate([
         {
             $sort: {
-                balance: 1
+                balance: -1
             }
-        }
+        },
     ]);
+
+    await Wallet.populate(doc, {
+        path: "user",
+        select: "name email country"
+    })
 
     res.status(200).json({
         status: "success",
@@ -315,7 +353,7 @@ exports.getUserInvestments = catchAsync(async (req, res, next) => {
         },
         {
             $sort: {
-                created_at: 1
+                created_at: -1
             }
         }
     ]);
@@ -324,4 +362,45 @@ exports.getUserInvestments = catchAsync(async (req, res, next) => {
         status: "success",
         data
     });
-})
+});
+//function to calculate total investment and total withdrawal
+exports.getTotal = catchAsync(async (req, res, next) => {
+    const { type } = req.params;
+    const { id } = req.user;
+    let data;
+
+    console.log(type);
+
+    if (!(type === "investment" || type === "deposit" || type === "withdrawal")) {
+        return next(new AppError("no specified route for this operation", 404));
+    }
+
+    const stats = await Transaction.aggregate([
+        {
+            $match: {
+                "user": mongoose.Types.ObjectId(id),
+                "transaction_type": { $eq: type },
+                "payment_status": { $eq: "success" }
+            }
+        },
+        {
+            $group: {
+                _id: '',
+                amount: { $sum: '$amount' }
+            }
+        },
+        {
+            $project: {
+                _id: 0,
+                amount: '$amount'
+            }
+        }
+    ]);
+
+    stats.map(el => data = el.amount)
+
+    res.status(201).json({
+        status: "success",
+        data
+    });
+});

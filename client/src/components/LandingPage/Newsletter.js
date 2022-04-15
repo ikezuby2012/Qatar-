@@ -34,7 +34,7 @@ const Newsletter = () => {
                     setContent("Thank you for subscribing!");
                     setColor("success");
                 }
-                console.log(res.data);
+                // console.log(res.data);
             } catch (err) {
                 console.log(err);
                 const { error } = err.response.data;

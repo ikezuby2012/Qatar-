@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { motion, useAnimation } from "framer-motion"
 import { useInView } from "react-intersection-observer";
 
 import { BsGraphUp } from "react-icons/bs";
@@ -7,90 +8,125 @@ import { FaMoneyCheckAlt } from "react-icons/fa";
 
 //FaMoneyCheckAlt
 const Subscribers = () => {
-    const { ref, inView, entry } = useInView({
-        threshold: 0,
-    });
-    const [price, setPrice] = useState(0);
-    const [users, setUsers] = useState(0);
-    const [invest, setInvest] = useState(0);
+    const controls = useAnimation();
+    const [ref, inView] = useInView();
 
     useEffect(() => {
-        const sleep = ms => {
-            return new Promise(resolve => setTimeout(resolve, ms))
+        if (inView) {
+            controls.start("visible");
         }
-        const onScroll = () => {
-            const first = async () => {
-                for (let i = 1; i <= 931; i++) {
-                    await sleep(0.2);
-                    setPrice(i);
-                }
-            }
-            const second = async () => {
-                for (let j = 1; j <= 18; j++) {
-                    await sleep(100);
-                    setUsers(`${j}, 000`);
-                }
-            }
-            const third = async () => {
-                for (let j = 1; j <= 14; j++) {
-                    await sleep(50);
-                    setInvest(j);
-                }
-            }
-            first();
-            second();
-            third();
-            // setPrice(931);
-            // setUsers(18000);
-        }
-        const Timer = setTimeout(() => onScroll(), 500);
+    }, [controls, inView]);
 
-        window.addEventListener("scroll", onScroll);
+    // useEffect(() => {
+    //     const sleep = ms => {
+    //         return new Promise(resolve => setTimeout(resolve, ms))
+    //     }
+    //     const onScroll = () => {
+    //         const first = async () => {
+    //             for (let i = 1; i <= 931; i++) {
+    //                 await sleep(0.2);
+    //                 setPrice(i);
+    //             }
+    //         }
+    //         const second = async () => {
+    //             for (let j = 1; j <= 18; j++) {
+    //                 await sleep(100);
+    //                 setUsers(`${j}, 000`);
+    //             }
+    //         }
+    //         const third = async () => {
+    //             for (let j = 1; j <= 14; j++) {
+    //                 await sleep(50);
+    //                 setInvest(j);
+    //             }
+    //         }
+    //         first();
+    //         second();
+    //         third();
+    //         // setPrice(931);
+    //         // setUsers(18000);
+    //     }
+    //     const Timer = setTimeout(() => onScroll(), 500);
 
-        return () => {
-            clearTimeout(Timer);
-            window.removeEventListener("scroll", onScroll);
-        }
-    });
+    //     window.addEventListener("scroll", onScroll);
+
+    //     return () => {
+    //         clearTimeout(Timer);
+    //         window.removeEventListener("scroll", onScroll);
+    //     }
+    // });
 
     return (
         <section class="subscribers">
             <div className={`subscribers-boxes ${inView}`}>
-                <div className="subscribers-box">
+                <motion.div className="subscribers-box"
+                    initial="hidden"
+                    whileInView="visible"
+                    ref={ref}
+                    animate={controls}
+                    variants={{
+                        visible: { opacity: 1, scale: 1 },
+                        hidden: { opacity: 0, scale: 0 }
+                    }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                >
                     <div className="subscribers-align">
                         <span>
                             <BsGraphUp className="subscribers-align-icon" />
                         </span>
                         <div className="subscribers-text">
-                            <h2>${inView && price}k</h2>
+                            <h2>$198k</h2>
                             <h4>investment in prices</h4>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
-                <div className="subscribers-box">
+                <motion.div className="subscribers-box"
+                    initial="hidden"
+                    whileInView="visible"
+                    ref={ref}
+                    animate={controls}
+                    variants={{
+                        visible: { opacity: 1, scale: 1 },
+                        hidden: { opacity: 0, scale: 0 }
+                    }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                >
                     <div className="subscribers-align">
                         <span>
                             <IoIosPeople className="subscribers-align-icon" />
                         </span>
                         <div className="subscribers-text">
-                            <h2>{inView && users}+</h2>
+                            <h2>18 000+</h2>
                             <h4>registered users</h4>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
-                <div className="subscribers-box" ref={ref}>
+                <motion.div className="subscribers-box"
+                    initial="hidden"
+                    whileInView="visible"
+                    ref={ref}
+                    animate={controls}
+                    variants={{
+                        visible: { opacity: 1, scale: 1 },
+                        hidden: { opacity: 0, scale: 0 }
+                    }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                >
                     <div className="subscribers-align">
                         <span>
                             <FaMoneyCheckAlt className="subscribers-align-icon" />
                         </span>
                         <div className="subscribers-text">
-                            <h2>${inView && invest}k</h2>
+                            <h2>$15k</h2>
                             <h4>average investment</h4>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );
