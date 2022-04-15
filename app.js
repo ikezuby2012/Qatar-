@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
@@ -71,11 +72,16 @@ app.get("/", (req, res) => {
 //     logs.push({ url: req.url, date: new Date() });
 //     res.send(JSON.stringify(logs));
 // })
+//SERVE CLIENT ROUTES
+app.use((req, res, next) => {
+    res.sendFile(path.join(__dirname,"public", "index.html"));
+})
 
 //ROUTE HANDLER NOT SPECIFIED 
 app.all("*", (req, res, next) => {
     next(new AppError(`can't find ${req.originalUrl} on this server`, 404));
 });
+
 
 app.use(errorHandler);
 
